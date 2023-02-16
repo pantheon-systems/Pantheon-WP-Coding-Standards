@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<ruleset name="Pantheon-WP">
+	<description>Proxy to the actual Pantheon-WP ruleset.</description>
+
+	<rule ref="vendor/pantheon-systems/pantheon-wp-coding-standards/Pantheon-WP/ruleset.xml" />
+
+</ruleset>

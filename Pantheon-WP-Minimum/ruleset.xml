@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<ruleset name="Pantheon-WP-Minimum">
+	<description>Minimum requirements for WordPress sites running on Pantheon.</description>
+
+	<exclude-pattern>/node_modules/*</exclude-pattern>
+	<exclude-pattern>vendor/*</exclude-pattern>
+
+	<arg name="extensions" value="php" />
+
+	<rule ref="PHPCompatibilityWP" />
+		<exclude name="PHPCompatibility.Miscellaneous.RemovedAlternativePHPTags.MaybeASPOpenTagFound" />
+	</rule>
+
+	<rule ref="WordPress" />
+
+	<!-- Disallow use of __FILE__ in menu slugs, which exposes the filesystem's data. -->
+	<rule ref="WordPress.Security.PluginMenuSlug" />
+	<rule ref="WordPress.Security.PluginMenuSlug.Using__FILE__">
+		<type>error</type>
+	</rule>
+
+	<!-- Disallow functions where WordPress has an alternative. -->
+	<rule ref="WordPress.WP.AlternativeFunctions">
+		<!-- ...but, allow some back in. -->
+		<properties>
+			<property name="exclude" type="array">
+				<element value="file_get_contents" />
+				<element value="file_system_read" />
+				<element value="json_encode" />
+				<element value="json_decode" />
+
+				<!-- wp_parse_url() only exists for inconsistency in PHP <5.4 -->
+				<element value="parse_url" />
+			</property>
+		</properties>
+	</rule>
+	<rule ref="WordPress.DB.RestrictedFunctions" />
+	<rule ref="WordPress.DB.RestrictedClasses" />
+
+	<!-- Disallow eval(). (From WordPress-Core) -->
+	<rule ref="Squiz.PHP.Eval"/>
+	<rule ref="Squiz.PHP.Eval.Discouraged">
+		<type>error</type>
+		<message>eval() is a security risk and is not allowed.</message>
+	</rule>
+
+	<!-- Disallow create_function() -->
+	<rule ref="WordPress.PHP.RestrictedPHPFunctions"/>
+
+	<!-- Disallow goto function. -->
+	<rule ref="Generic.PHP.DiscourageGoto"/>
+	<rule ref="Generic.PHP.DiscourageGoto.Found">
+		<type>error</type>
+		<message>The "goto" language construct should not be used.</message>
+	</rule>
+
+	<!-- Disallow short PHP tags. (From WordPress-Core) -->
+	<rule ref="Generic.PHP.DisallowShortOpenTag" />
+
+	<!-- Disallow old-style PHP tags (e.g. ASP-style) -->
+	<rule ref="Generic.PHP.DisallowAlternativePHPTags">
+		<!-- Allow ASP-style tags that aren't tokenised. -->
+		<exclude name="Generic.PHP.DisallowAlternativePHPTags.MaybeASPShortOpenTagFound" />
+		<exclude name="Generic.PHP.DisallowAlternativePHPTags.MaybeASPOpenTagFound" />
+	</rule>
+
+	<!-- Require correct usage of WP's i18n functions. -->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="check_translator_comments" value="false" />
+		</properties>
+
+		<!-- Allow empty strings to be translated (e.g. space character) -->
+		<exclude name="WordPress.WP.I18n.NoEmptyStrings" />
+
+		<!--
+			Allow unordered placeholders. It's not good style, but strictly
+			speaking it's not a problem.
+		-->
+		<exclude name="WordPress.WP.I18n.UnorderedPlaceholdersText" />
+		<exclude name="WordPress.WP.I18n.MixedOrderedPlaceholdersText" />
+	</rule>
+
+	<!-- Require valid syntax. -->
+	<rule ref="Generic.PHP.Syntax" />
+</ruleset>

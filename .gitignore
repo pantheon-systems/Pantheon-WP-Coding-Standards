@@ -1,0 +1,17 @@
+# Ignore Composer things.
+vendor/
+composer.lock
+*.idea
+
+# Ignore node things.
+node_modules/
+npm-debug.log
+yarn.lock
+
+# Ignore PHPUnit things.
+archives/
+phpcs-standard/
+.phpunit.result.cache
+
+# OS generated files.
+.DS_Store

@@ -7,7 +7,7 @@
 
 	<arg name="extensions" value="php" />
 
-	<rule ref="PHPCompatibilityWP" />
+	<rule ref="PHPCompatibilityWP">
 		<exclude name="PHPCompatibility.Miscellaneous.RemovedAlternativePHPTags.MaybeASPOpenTagFound" />
 	</rule>
 

@@ -3,8 +3,6 @@
 
 PHPCS rulesets for WordPress projects on Pantheon.
 
-This is a work-in-progress...
-
 ## Setup
 The PHPCS ruleset can be installed via Composer:
 
@@ -19,6 +17,12 @@ vendor/bin/phpcs -s --standard=Pantheon-WP .
 ```
 
 We recommend using the `-s` flag so that PHPCS will report the specific rule that was violated. This makes it easier to add exclusions or research possible solutions.
+
+If you have a tests directory that you want to exclude from the sniffs, you can do so by adding the `--ignore` flag:
+
+```
+vendor/bin/phpcs -s --ignore=tests/* --standard=Pantheon-WP .
+```
 
 ## Extending
 

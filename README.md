@@ -1,5 +1,5 @@
 # Pantheon WP Coding Standards
-[![Unofficial Support](https://img.shields.io/badge/pantheon-unsupported-yellow?logo=pantheon&color=FFDC28)](https://pantheon.io/docs/oss-support-levels#unofficial-support) [![Packagist Version](https://img.shields.io/packagist/v/pantheon-systems/pantheon-wp-coding-standards)](https://packagist.org/pantheon-systems/pantheon-wp-coding-standards) [![MIT License](https://img.shields.io/github/license/pantheon-systems/Pantheon-WP-Coding-Standards)](https://github.com/pantheon-systems/Pantheon-WP-Coding-Standards/blob/main/LICENSE)
+[![Unofficial Support](https://img.shields.io/badge/pantheon-unsupported-yellow?logo=pantheon&color=FFDC28)](https://pantheon.io/docs/oss-support-levels#unofficial-support) [![Packagist Version](https://img.shields.io/packagist/v/pantheon-systems/pantheon-wp-coding-standards)](https://packagist.org/packages/pantheon-systems/pantheon-wp-coding-standards) [![MIT License](https://img.shields.io/github/license/pantheon-systems/Pantheon-WP-Coding-Standards)](https://github.com/pantheon-systems/Pantheon-WP-Coding-Standards/blob/main/LICENSE)
 
 PHPCS rulesets for WordPress projects on Pantheon.
 

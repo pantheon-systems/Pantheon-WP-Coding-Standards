@@ -44,7 +44,10 @@
 	</rule>
 	<rule ref="WordPress-Extra" />
 	<rule ref="WordPress-Docs" />
-	<rule ref="WordPressVIPMinimum" />
+	<rule ref="WordPressVIPMinimum">
+		<exclude name="WordPressVIPMinimum.Functions.RestrictedFunctions.wp_remote_get_wp_remote_get" />
+		<exclude name="WordPressVIPMinimum.Files.IncludingFile.UsingVariable" />
+	</rule>
 
 	<!-- Rule exclusions -->
 	<rule ref="Generic.Arrays.DisallowLongArraySyntax" />

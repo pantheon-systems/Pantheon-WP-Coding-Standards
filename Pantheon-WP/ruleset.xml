@@ -48,6 +48,7 @@
 
 	<!-- Rule exclusions -->
 	<rule ref="Generic.Arrays.DisallowLongArraySyntax" />
+	<rule ref="WordPressVIPMinimum.Functions.RestrictedFunctions.wp_remote_get_wp_remote_get" />
 
 	<!-- Require proper docblocks be used in all PHP files -->
 	<rule ref="WordPress-Docs">

@@ -19,7 +19,7 @@
 		<exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine" />
 		<exclude name="PEAR.Functions.FunctionCallSignature.MultipleArguments" />
 		<exclude name="WordPress.Arrays.MultipleStatementAlignment.DoubleArrowNotAligned" />
-		<exclude name="WordPress.PHP.DisallowShortTernary.Found" />
+		<exclude name="Universal.Operators.DisallowShortTernary.Found" />
 		<!--
 		The following was written by Ryan McCue in the HM Coding Standards.
 		I tend to agree with the argument that Yoda conditions are ridiculous

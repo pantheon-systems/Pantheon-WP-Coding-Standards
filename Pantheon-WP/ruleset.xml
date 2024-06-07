@@ -47,6 +47,7 @@
 	<rule ref="WordPressVIPMinimum">
 		<exclude name="WordPressVIPMinimum.Functions.RestrictedFunctions.wp_remote_get_wp_remote_get" />
 		<exclude name="WordPressVIPMinimum.Files.IncludingFile.UsingVariable" />
+		<exclude name="WordPressVIPMinimum.Variables.RestrictedVariables.cache_constraints___SERVER__HTTP_USER_AGENT__" />
 	</rule>
 
 	<!-- Rule exclusions -->

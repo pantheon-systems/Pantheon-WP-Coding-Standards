@@ -43,6 +43,9 @@
 		<type>error</type>
 		<message>eval() is a security risk and is not allowed.</message>
 	</rule>
+	<rule ref="Squiz.Operators.ValidLogicalOperators">
+		<exclude name="Squiz.Operators.ValidLogicalOperators.NotAllowed" />
+	</rule>
 
 	<!-- Disallow create_function() -->
 	<rule ref="WordPress.PHP.RestrictedPHPFunctions"/>

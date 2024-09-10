@@ -1,0 +1,12 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: Pantheon-WP-Coding-Standards
+  description: Auto-generated catalog info for pantheon-systems/Pantheon-WP-Coding-Standards
+  annotations:
+    backstage.io/techdocs-ref: dir:docs/
+spec:
+  type: library
+  lifecycle: mature
+  owner: site

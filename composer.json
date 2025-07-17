@@ -13,7 +13,7 @@
     "prefer-stable": true,
     "require": {
         "automattic/vipwpcs": "^3.0",
-        "fig-r/psr2r-sniffer": "^1.5",
+        "fig-r/psr2r-sniffer": "^2.2",
         "phpcompatibility/phpcompatibility-wp": "^2.1",
         "wp-coding-standards/wpcs": "^3.0"
     },

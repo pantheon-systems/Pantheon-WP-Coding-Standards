@@ -13,6 +13,11 @@
 
 	<rule ref="WordPress" />
 
+	<!-- Exclude deprecated sniffs from included standards. -->
+	<rule ref="Generic.Functions.CallTimePassByReference">
+		<severity>0</severity>
+	</rule>
+
 	<!-- Disallow use of __FILE__ in menu slugs, which exposes the filesystem's data. -->
 	<rule ref="WordPress.Security.PluginMenuSlug" />
 	<rule ref="WordPress.Security.PluginMenuSlug.Using__FILE__">

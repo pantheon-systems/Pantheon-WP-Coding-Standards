@@ -70,4 +70,7 @@
 
 	<!-- Ban inline assignment in control structures (see note on Yoda Conditions above). -->
 	<rule ref="PSR2R.ControlStructures.NoInlineAssignment" />
+
+	<!-- Ignore PHP-related errors. -->
+	<ini name="error_reporting" value="E_ALL &#38; ~E_DEPRECATED" />	
 </ruleset>

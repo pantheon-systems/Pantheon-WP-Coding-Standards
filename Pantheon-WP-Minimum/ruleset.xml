@@ -44,7 +44,7 @@
 	<rule ref="WordPress.DB.RestrictedClasses" />
 
 	<!-- Disallow rename() function -->
-   <rule ref="./Sniffs/Files/DisallowRenameFunctionSniff.php">
+	<rule ref="./Sniffs/Files/DisallowRenameFunctionSniff.php">
 		<type>error</type>
 	</rule>
 

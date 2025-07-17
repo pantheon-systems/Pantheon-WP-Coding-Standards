@@ -11,6 +11,7 @@
 		<exclude name="PHPCompatibility.Miscellaneous.RemovedAlternativePHPTags.MaybeASPOpenTagFound" />
 	</rule>
 
+	<!-- Exclude deprecated sniffs from included standards. -->
 	<rule ref="WordPress">
 		<exclude name="Generic.Functions.CallTimePassByReference"/>
 	</rule>

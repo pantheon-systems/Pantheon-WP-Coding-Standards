@@ -21,10 +21,20 @@
         "squizlabs/php_codesniffer": "^3.13",
         "yoast/phpunit-polyfills": "4.0.0"
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Pantheon_WP_Minimum\\": "Pantheon-WP-Minimum/"
+        }
+    },
     "config": {
         "sort-packages": true,
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
+    },
+    "scripts": {
+        "test": [
+            "./tests/run-test.sh tests/*.php"
+        ]
     }
 }

@@ -26,11 +26,11 @@ echo "--------------------------------------------------"
 
 # Compare the actual output with the expected output.
 if ! diff <(echo "$ACTUAL_OUTPUT") <(echo "$EXPECTED_OUTPUT") > /dev/null; then
-    echo "RESULT: FAILED"
+    echo "RESULT: FAILED ❌"
     echo "--- DIFF ---"
     diff <(echo "$ACTUAL_OUTPUT") <(echo "$EXPECTED_OUTPUT")
     exit 1
 fi
 
-echo "RESULT: PASSED"
+echo "RESULT: PASSED ✅"
 exit 0

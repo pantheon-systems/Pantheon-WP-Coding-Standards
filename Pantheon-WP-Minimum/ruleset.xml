@@ -21,6 +21,7 @@
 
 	<!-- Disallow functions where WordPress has an alternative. -->
 	<rule ref="WordPress.WP.AlternativeFunctions">
+		<exclude name="WordPress.WP.AlternativeFunctions.rename_rename" />
 		<!-- ...but, allow some back in. -->
 		<properties>
 			<property name="exclude" type="array">
@@ -38,7 +39,7 @@
 	<rule ref="WordPress.DB.RestrictedClasses" />
 
 	<!-- Disallow rename() function -->
-   <rule ref="PantheonWPMinimum.Sniffs.Files.DisallowRenameFunctionSniff">
+   <rule ref="./Sniffs/Files/DisallowRenameFunctionSniff.php">
 		<type>error</type>
 	</rule>
 

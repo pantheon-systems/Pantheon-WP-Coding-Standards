@@ -11,11 +11,8 @@
 		<exclude name="PHPCompatibility.Miscellaneous.RemovedAlternativePHPTags.MaybeASPOpenTagFound" />
 	</rule>
 
-	<rule ref="WordPress" />
-
-	<!-- Exclude deprecated sniffs from included standards. -->
-	<rule ref="Generic.Functions.CallTimePassByReference">
-		<severity>0</severity>
+	<rule ref="WordPress">
+		<exclude name="Generic.Functions.CallTimePassByReference"/>
 	</rule>
 
 	<!-- Disallow use of __FILE__ in menu slugs, which exposes the filesystem's data. -->

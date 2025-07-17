@@ -1,0 +1,10 @@
+version: 2
+updates:
+  - package-ecosystem: composer
+    directory: "/"
+    schedule:
+      interval: weekly
+      timezone: America/Los_Angeles
+      day: sunday
+    target-branch: main
+    open-pull-requests-limit: 99

@@ -37,6 +37,11 @@
 	<rule ref="WordPress.DB.RestrictedFunctions" />
 	<rule ref="WordPress.DB.RestrictedClasses" />
 
+	<!-- Disallow rename() function -->
+   <rule ref="PantheonWPMinimum.Sniffs.Files.DisallowRenameFunctionSniff">
+		<type>error</type>
+	</rule>
+
 	<!-- Disallow eval(). (From WordPress-Core) -->
 	<rule ref="Squiz.PHP.Eval"/>
 	<rule ref="Squiz.PHP.Eval.Discouraged">

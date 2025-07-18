@@ -14,6 +14,7 @@ if [ ! -f "$TEST_FILE" ]; then
     exit 1
 fi
 
+# Get the test name from the file header.
 TEST_NAME=$(sed -n '3s/ \* //p' "$TEST_FILE")
 
 echo ""
@@ -48,6 +49,6 @@ if ! diff <(echo "$ACTUAL_OUTPUT") <(echo "$EXPECTED_OUTPUT") > /dev/null; then
 fi
 
 echo "RESULT: PASSED ✅"
-echo ""
+echo " "
 
 exit 0

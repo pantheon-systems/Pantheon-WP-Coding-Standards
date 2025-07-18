@@ -15,6 +15,7 @@
 	<!-- Rulesets to use -->
 	<rule ref="PHPCompatibilityWP" />
 	<rule ref="WordPress-Core">
+		<exclude name="Generic.Functions.CallTimePassByReference" />
 		<exclude name="Universal.Arrays.DisallowShortArraySyntax" />
 		<exclude name="Generic.Formatting.MultipleStatementAlignment.NotSameWarning" />
 		<exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket" />
@@ -50,6 +51,7 @@
 		<exclude name="WordPressVIPMinimum.Functions.RestrictedFunctions.wp_remote_get_wp_remote_get" />
 		<exclude name="WordPressVIPMinimum.Files.IncludingFile.UsingVariable" />
 		<exclude name="WordPressVIPMinimum.Variables.RestrictedVariables.cache_constraints___SERVER__HTTP_USER_AGENT__" />
+		<exclude name="WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_rename" />
 	</rule>
 
 	<!-- Rule exclusions -->

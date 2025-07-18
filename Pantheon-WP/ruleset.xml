@@ -8,7 +8,9 @@
 	<arg name="extensions" value="php" />
 
 	<!-- Include everything in the minimum ruleset -->
-	<rule ref="Pantheon-WP-Minimum" />
+	<rule ref="Pantheon-WP-Minimum">
+		<exclude name="Pantheon_WP_Minimum.Commenting.DisallowMultilineSlashComment.Found" />
+	</rule>
 
 	<!-- Rulesets to use -->
 	<rule ref="PHPCompatibilityWP" />

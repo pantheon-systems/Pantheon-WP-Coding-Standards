@@ -42,10 +42,11 @@ class DisallowMultilineSlashCommentSniff implements Sniff {
 	 *
 	 * @param File $phpcsFile The file being scanned.
 	 * @param int  $stackPtr  The position of the current token in the stack.
+	 * @param string $error    The type of error to report ('warning' or 'error').
 	 *
 	 * @return void
 	 */
-	public static function getConsecutiveSingleLineComments( File $phpcsFile, $stackPtr ) {
+	public static function getConsecutiveSingleLineComments( File $phpcsFile, $stackPtr, $error = 'warning' ) {
 		$tokens = $phpcsFile->getTokens();
 		$token  = $tokens[ $stackPtr ];
 
@@ -77,7 +78,11 @@ class DisallowMultilineSlashCommentSniff implements Sniff {
 		if ( $lineCount > 1 ) {
 			$message = 'A block of %s consecutive single-line comments was found starting on this line. Please use a /* ... */ block instead.';
 			$data    = [ $lineCount ];
-			$phpcsFile->addWarning( $message, $stackPtr, 'Found', $data );
+			if ( 'warning' === $error ) {
+				$phpcsFile->addWarning( $message, $stackPtr, 'Found', $data );
+			} else {
+				$phpcsFile->addError( $message, $stackPtr, 'Found', $data );
+			}
 		}
 	}
 }

@@ -8,11 +8,14 @@
 	<arg name="extensions" value="php" />
 
 	<!-- Include everything in the minimum ruleset -->
-	<rule ref="Pantheon-WP-Minimum" />
+	<rule ref="Pantheon-WP-Minimum">
+		<exclude name="Pantheon_WP_Minimum.Commenting.DisallowMultilineSlashComment.Found" />
+	</rule>
 
 	<!-- Rulesets to use -->
 	<rule ref="PHPCompatibilityWP" />
 	<rule ref="WordPress-Core">
+		<exclude name="Generic.Functions.CallTimePassByReference" />
 		<exclude name="Universal.Arrays.DisallowShortArraySyntax" />
 		<exclude name="Generic.Formatting.MultipleStatementAlignment.NotSameWarning" />
 		<exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket" />
@@ -48,6 +51,15 @@
 		<exclude name="WordPressVIPMinimum.Functions.RestrictedFunctions.wp_remote_get_wp_remote_get" />
 		<exclude name="WordPressVIPMinimum.Files.IncludingFile.UsingVariable" />
 		<exclude name="WordPressVIPMinimum.Variables.RestrictedVariables.cache_constraints___SERVER__HTTP_USER_AGENT__" />
+		<exclude name="WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_rename" />
+
+		<!-- Exclude CSS/JS rules that are deprecated in PHPCS 3.x -->
+		<exclude name="WordPressVIPMinimum.JS.Window" />
+		<exclude name="WordPressVIPMinimum.JS.DangerouslySetInnerHTML" />
+		<exclude name="WordPressVIPMinimum.JS.InnerHTML" />
+		<exclude name="WordPressVIPMinimum.JS.StrippingTags" />
+		<exclude name="WordPressVIPMinimum.JS.StringConcat" />
+		<exclude name="WordPressVIPMinimum.JS.HTMLExecutingFunctions" />
 	</rule>
 
 	<!-- Rule exclusions -->
@@ -72,5 +84,8 @@
 	<rule ref="PSR2R.ControlStructures.NoInlineAssignment" />
 
 	<!-- Ignore PHP-related errors. -->
-	<ini name="error_reporting" value="E_ALL &#38; ~E_DEPRECATED" />	
+	<ini name="error_reporting" value="E_ALL &#38; ~E_DEPRECATED" />
+
+	<!-- Pantheon-WP Sniffs -->
+	<rule ref="./Sniffs/Commenting/DisallowMultilineSlashCommentSniff.php"/>
 </ruleset>

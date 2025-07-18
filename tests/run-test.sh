@@ -1,26 +1,41 @@
 #!/bin/bash
+set -e
 
-TEST_FILE=$1
+RULESET=$1
+TEST_FILE=$2
+
+if [ -z "$RULESET" ]; then
+    echo "Usage: $0 <ruleset> <test_file>"
+    exit 1
+fi
 
 if [ ! -f "$TEST_FILE" ]; then
     echo "Test file not found: $TEST_FILE"
     exit 1
 fi
 
-echo "Running test: $TEST_FILE"
+# Get the test name from the file header.
+TEST_NAME=$(sed -n '3s/ \* //p' "$TEST_FILE")
+
+echo ""
+echo "Running test: ${TEST_NAME} with ruleset: $RULESET"
+echo "$TEST_FILE"
 
 # Use --basepath=. to ensure relative paths in the report.
-JSON_REPORT=$(phpcs --standard=Pantheon-WP-Minimum/ruleset.xml --report=json --basepath=. --warning-severity=0 "$TEST_FILE" 2>/dev/null | sed -n '/{/,$p')
+JSON_REPORT=$(phpcs --standard="./$RULESET/ruleset.xml" --report=json --basepath=. "$TEST_FILE" 2>/dev/null | sed -n '/{/,$p')
 
-# Extract actual and expected errors.
-ACTUAL_OUTPUT=$(echo "$JSON_REPORT" | jq -r '.files."'"$TEST_FILE"'".messages[]?.source' | sort)
-EXPECTED_OUTPUT=$(sed -n 's/.*@expectedError //p' "$TEST_FILE" | sort)
+# Debug
+# echo "JSON Report: ${JSON_REPORT}"
+
+# Extract actual and expected errors, including severity.
+ACTUAL_OUTPUT=$(echo "$JSON_REPORT" | jq -r '.files."'"$TEST_FILE"'".messages[] | "[\(.type | ascii_upcase)] \(.source)"' | sort)
+EXPECTED_OUTPUT=$( (sed -n "s/.*@expectedError\[$RULESET\] /\[ERROR\] /p" "$TEST_FILE"; sed -n "s/.*@expectedWarning\[$RULESET\] /\[WARNING\] /p" "$TEST_FILE") | sort)
 
 echo "--------------------------------------------------"
-echo "EXPECTED ERRORS:"
+echo "EXPECTED ISSUES:"
 echo -e "${EXPECTED_OUTPUT:-<none>}"
 echo "--------------------------------------------------"
-echo "ACTUAL ERRORS:"
+echo "ACTUAL ISSUES:"
 echo -e "${ACTUAL_OUTPUT:-<none>}"
 echo "--------------------------------------------------"
 
@@ -33,4 +48,6 @@ if ! diff <(echo "$ACTUAL_OUTPUT") <(echo "$EXPECTED_OUTPUT") > /dev/null; then
 fi
 
 echo "RESULT: PASSED ✅"
+echo " "
+
 exit 0

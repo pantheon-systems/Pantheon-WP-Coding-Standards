@@ -21,9 +21,10 @@
         "squizlabs/php_codesniffer": "^3.13",
         "yoast/phpunit-polyfills": "4.0.0"
     },
-    "autoload-dev": {
+    "autoload": {
         "psr-4": {
-            "Pantheon_WP_Minimum\\": "Pantheon-WP-Minimum/"
+            "Pantheon_WP_Minimum\\": "Pantheon-WP-Minimum/",
+            "Pantheon_WP\\": "Pantheon-WP/"
         }
     },
     "config": {
@@ -33,8 +34,21 @@
         }
     },
     "scripts": {
+        "lint:minimum": [
+            "vendor/bin/phpcs -s ./tests --standard=./Pantheon-WP-Minimum/ruleset.xml"
+        ],
+        "lint:standard": [
+            "vendor/bin/phpcs -s ./tests --standard=./Pantheon-WP/ruleset.xml"
+        ],
+        "test:minimum": [
+            "for test_file in tests/*.php; do ./tests/run-test.sh Pantheon-WP-Minimum \"$test_file\"; done"
+        ],
+        "test:standard": [
+            "for test_file in tests/*.php; do ./tests/run-test.sh Pantheon-WP \"$test_file\"; done"
+        ],
         "test": [
-            "./tests/run-test.sh tests/*.php"
+            "@test:minimum",
+            "@test:standard"
         ]
     }
 }

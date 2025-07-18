@@ -48,5 +48,6 @@ if ! diff <(echo "$ACTUAL_OUTPUT") <(echo "$EXPECTED_OUTPUT") > /dev/null; then
 fi
 
 echo "RESULT: PASSED ✅"
-printf "\n"
+echo ""
+
 exit 0

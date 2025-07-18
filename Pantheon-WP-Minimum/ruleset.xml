@@ -11,7 +11,10 @@
 		<exclude name="PHPCompatibility.Miscellaneous.RemovedAlternativePHPTags.MaybeASPOpenTagFound" />
 	</rule>
 
-	<rule ref="WordPress" />
+	<!-- Exclude deprecated sniffs from included standards. -->
+	<rule ref="WordPress">
+		<exclude name="Generic.Functions.CallTimePassByReference"/>
+	</rule>
 
 	<!-- Disallow use of __FILE__ in menu slugs, which exposes the filesystem's data. -->
 	<rule ref="WordPress.Security.PluginMenuSlug" />
@@ -21,6 +24,7 @@
 
 	<!-- Disallow functions where WordPress has an alternative. -->
 	<rule ref="WordPress.WP.AlternativeFunctions">
+		<exclude name="WordPress.WP.AlternativeFunctions.rename_rename" />
 		<!-- ...but, allow some back in. -->
 		<properties>
 			<property name="exclude" type="array">
@@ -36,6 +40,11 @@
 	</rule>
 	<rule ref="WordPress.DB.RestrictedFunctions" />
 	<rule ref="WordPress.DB.RestrictedClasses" />
+
+	<!-- Disallow rename() function -->
+	<rule ref="./Sniffs/Files/DisallowRenameFunctionSniff.php">
+		<type>error</type>
+	</rule>
 
 	<!-- Disallow eval(). (From WordPress-Core) -->
 	<rule ref="Squiz.PHP.Eval"/>

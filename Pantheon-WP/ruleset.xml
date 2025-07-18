@@ -52,6 +52,14 @@
 		<exclude name="WordPressVIPMinimum.Files.IncludingFile.UsingVariable" />
 		<exclude name="WordPressVIPMinimum.Variables.RestrictedVariables.cache_constraints___SERVER__HTTP_USER_AGENT__" />
 		<exclude name="WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_rename" />
+
+		<!-- Exclude CSS/JS rules that are deprecated in PHPCS 3.x -->
+		<exclude name="WordPressVIPMinimum.JS.Window" />
+		<exclude name="WordPressVIPMinimum.JS.DangerouslySetInnerHTML" />
+		<exclude name="WordPressVIPMinimum.JS.InnerHTML" />
+		<exclude name="WordPressVIPMinimum.JS.StrippingTags" />
+		<exclude name="WordPressVIPMinimum.JS.StringConcat" />
+		<exclude name="WordPressVIPMinimum.JS.HTMLExecutingFunctions" />
 	</rule>
 
 	<!-- Rule exclusions -->

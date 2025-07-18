@@ -41,11 +41,6 @@
 	<rule ref="WordPress.DB.RestrictedFunctions" />
 	<rule ref="WordPress.DB.RestrictedClasses" />
 
-	<!-- Disallow rename() function -->
-	<rule ref="./Sniffs/Files/DisallowRenameFunctionSniff.php">
-		<type>error</type>
-	</rule>
-
 	<!-- Disallow eval(). (From WordPress-Core) -->
 	<rule ref="Squiz.PHP.Eval"/>
 	<rule ref="Squiz.PHP.Eval.Discouraged">
@@ -94,4 +89,14 @@
 
 	<!-- Ignore PHP-related errors. -->
 	<ini name="error_reporting" value="E_ALL &#38; ~E_DEPRECATED" />
+
+	<!-- Pantheon specific rules -->
+
+	<!-- Disallow rename() function -->
+	<rule ref="./Sniffs/Files/DisallowRenameFunctionSniff.php">
+		<type>error</type>
+	</rule>
+
+	<!-- Disallow multiline // comments -->
+	<rule ref="./Sniffs/Commenting/DisallowMultilineSlashCommentSniff.php"/>
 </ruleset>

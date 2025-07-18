@@ -1,6 +1,6 @@
 <?php
 /**
- * Disallow usage of multiline slash comments.
+ * Multiline comments should use /* syntax.
  *
  * @expectedWarning[Pantheon-WP-Minimum] Pantheon_WP_Minimum.Commenting.DisallowMultilineSlashComment.Found
  * @expectedError[Pantheon-WP] Pantheon_WP.Commenting.DisallowMultilineSlashComment.Found

@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 RULESET=$1
 TEST_FILE=$2
@@ -13,7 +14,11 @@ if [ ! -f "$TEST_FILE" ]; then
     exit 1
 fi
 
-echo "Running test: $TEST_FILE with ruleset: $RULESET"
+TEST_NAME=$(sed -n '3s/ \* //p' "$TEST_FILE")
+
+echo ""
+echo "Running test: $TEST_NAME with ruleset: $RULESET"
+echo "$TEST_FILE"
 
 # Use --basepath=. to ensure relative paths in the report.
 JSON_REPORT=$(phpcs --standard="./$RULESET/ruleset.xml" --report=json --basepath=. "$TEST_FILE" 2>/dev/null | sed -n '/{/,$p')

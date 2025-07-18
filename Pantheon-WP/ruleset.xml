@@ -84,5 +84,8 @@
 	<rule ref="PSR2R.ControlStructures.NoInlineAssignment" />
 
 	<!-- Ignore PHP-related errors. -->
-	<ini name="error_reporting" value="E_ALL &#38; ~E_DEPRECATED" />	
+	<ini name="error_reporting" value="E_ALL &#38; ~E_DEPRECATED" />
+
+	<!-- Pantheon-WP Sniffs -->
+	<rule ref="./Sniffs/Commenting/DisallowMultilineSlashCommentSniff.php"/>
 </ruleset>

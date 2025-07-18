@@ -2,8 +2,9 @@
 /**
  * Disallow usage of multiline slash comments.
  *
- * @expectedError Pantheon_WP_Minimum.Commenting.DisallowMultilineSlashComment.Found
- * @expectedWarning Pantheon_WP_Minimum.Commenting.DisallowMultilineSlashComment.LongLine
+ * @expectedWarning[Pantheon-WP-Minimum] Pantheon_WP_Minimum.Commenting.DisallowMultilineSlashComment.Found
+ * @expectedError[Pantheon-WP] Pantheon_WP.Commenting.DisallowMultilineSlashComment.Found
+ * @expectedWarning[Pantheon-WP] Pantheon_WP.Commenting.DisallowMultilineSlashComment.LongLine
  *
  * @package Pantheon-WP-Coding-Standards
  */
@@ -22,8 +23,8 @@
 /*
  * This comment is ideal. It uses the correct syntax and is not too long.
  * What's with the life preserver? Doc, she's beautiful. She's crazy about me.
- * Look at this, look what she wrote me, Doc. That says it all. Doc, you're my 
- * only hope. Oh, uh, hey you, get your damn hands off her. Do you really think 
- * I oughta swear? Well, now we gotta sneak this back into my laboratory, we've 
+ * Look at this, look what she wrote me, Doc. That says it all. Doc, you're my
+ * only hope. Oh, uh, hey you, get your damn hands off her. Do you really think
+ * I oughta swear? Well, now we gotta sneak this back into my laboratory, we've
  * gotta get you home. Jennifer.
  */

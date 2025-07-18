@@ -2,7 +2,8 @@
 /**
  * DisallowRenameFunctionTest.inc
  *
- * @expectedError Pantheon_WP_Minimum.Files.DisallowRenameFunction.RenameFunctionDisallowed
+ * @expectedError[Pantheon-WP-Minimum] Pantheon_WP_Minimum.Files.DisallowRenameFunction.RenameFunctionDisallowed
+ * @expectedError[Pantheon-WP] Pantheon_WP_Minimum.Files.DisallowRenameFunction.RenameFunctionDisallowed
  *
  * @package Pantheon-WP-Coding-Standards
  */

@@ -9,6 +9,7 @@ namespace Pantheon_WP\Sniffs\Commenting;
 
 use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\Sniff;
+use Pantheon_WP_Minimum\Sniffs\Commenting\DisallowMultilineSlashCommentSniff as PantheonWPMinimumCommenting;
 
 /**
  * Verifies that multiline comments are not used.
@@ -37,17 +38,8 @@ class DisallowMultilineSlashCommentSniff implements Sniff {
 		$tokens = $phpcsFile->getTokens();
 		$token  = $tokens[ $stackPtr ];
 
-		// Check for consecutive single-line comments.
-		if ( '//' === substr( $token['content'], 0, 2 ) ) {
-			$nextComment = $phpcsFile->findNext( T_COMMENT, $stackPtr + 1 );
-			if ( false !== $nextComment && $tokens[ $nextComment ]['line'] === $token['line'] + 1 ) {
-				if ( '//' === substr( $tokens[ $nextComment ]['content'], 0, 2 ) ) {
-					$error = 'Multiline comments should use /* ... */ syntax, not multiple // comments.';
-					$phpcsFile->addError( $error, $stackPtr, 'Found' );
-				}
-			}
-			return;
-		}
+		// Pull sniff for single-line comments from Pantheon-WP-Minimum.
+		PantheonWPMinimumCommenting::getConsecutiveSingleLineComments( $phpcsFile, $stackPtr );
 
 		// Check for long lines within block comments.
 		if ( substr( $token['content'], 0, 2 ) === '/*' ) {

@@ -39,7 +39,7 @@ class DisallowMultilineSlashCommentSniff implements Sniff {
 		$token  = $tokens[ $stackPtr ];
 
 		// Pull sniff for single-line comments from Pantheon-WP-Minimum.
-		PantheonWPMinimumCommenting::getConsecutiveSingleLineComments( $phpcsFile, $stackPtr );
+		PantheonWPMinimumCommenting::getConsecutiveSingleLineComments( $phpcsFile, $stackPtr, 'error' );
 
 		// Check for long lines within block comments.
 		if ( substr( $token['content'], 0, 2 ) === '/*' ) {

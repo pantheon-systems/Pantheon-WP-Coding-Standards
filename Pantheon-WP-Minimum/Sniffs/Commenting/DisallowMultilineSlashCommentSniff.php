@@ -55,12 +55,24 @@ class DisallowMultilineSlashCommentSniff implements Sniff {
 			return;
 		}
 
-		// Check the previous line to see if we are already in a block.
+		// If the comment is not on a line by itself, it's not part of a multi-line comment block.
+		$prev = $phpcsFile->findPrevious( T_WHITESPACE, $stackPtr - 1, null, true );
+		if ( false !== $prev && $tokens[ $prev ]['line'] === $token['line'] ) {
+			return;
+		}
+
+		// Check the previous line to see if we are already in a block of non-inline comments.
 		$prevLine = $token['line'] - 1;
-		$prevComment = $phpcsFile->findPrevious( T_COMMENT, $stackPtr - 1, null, false, null, true );
-		if ( false !== $prevComment && $tokens[$prevComment]['line'] === $prevLine ) {
-			if ( '//' === substr( $tokens[$prevComment]['content'], 0, 2 ) ) {
-				return; // This is not the start of the block.
+		$prevCommentPtr = $phpcsFile->findPrevious( T_COMMENT, $stackPtr - 1, null, false, null, true );
+		if ( false !== $prevCommentPtr && $tokens[ $prevCommentPtr ]['line'] === $prevLine ) {
+			$prevCommentToken = $tokens[ $prevCommentPtr ];
+			if ( '//' === substr( $prevCommentToken['content'], 0, 2 ) ) {
+				// Was the previous comment also a non-inline comment?
+				$prev = $phpcsFile->findPrevious( T_WHITESPACE, $prevCommentPtr - 1, null, true );
+				if ( false === $prev || $tokens[ $prev ]['line'] !== $prevCommentToken['line'] ) {
+					// Yes, it was. So we are in the middle of a block.
+					return;
+				}
 			}
 		}
 
@@ -69,9 +81,16 @@ class DisallowMultilineSlashCommentSniff implements Sniff {
 		$nextComment = $stackPtr;
 		while ( true ) {
 			$nextComment = $phpcsFile->findNext( T_COMMENT, $nextComment + 1, null, false, null, true );
-			if ( false === $nextComment || $tokens[$nextComment]['line'] !== ( $token['line'] + $lineCount ) ) {
+			if ( false === $nextComment || $tokens[ $nextComment ]['line'] !== ( $token['line'] + $lineCount ) ) {
 				break; // The block has ended.
 			}
+
+			// If the next comment is not on a line by itself, it's an inline comment, so the block ends here.
+			$prev = $phpcsFile->findPrevious( T_WHITESPACE, $nextComment - 1, null, true );
+			if ( false !== $prev && $tokens[ $prev ]['line'] === $tokens[ $nextComment ]['line'] ) {
+				break;
+			}
+
 			$lineCount++;
 		}
 

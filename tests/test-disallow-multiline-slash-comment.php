@@ -28,3 +28,10 @@
  * I oughta swear? Well, now we gotta sneak this back into my laboratory, we've
  * gotta get you home. Jennifer.
  */
+
+// This should be allowed.
+$an_array = [ // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
+	'key1' => 1, // The first value in the array.
+	'key2' => 2, // The second value in the array.
+	'key3' => 3, // The third value in the array.
+];

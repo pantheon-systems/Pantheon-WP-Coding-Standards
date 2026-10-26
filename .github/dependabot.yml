@@ -11,3 +11,8 @@ updates:
       day: sunday
     target-branch: main
     open-pull-requests-limit: 99
+    groups:
+      composer-minor-patch:
+        update-types:
+          - minor
+          - patch
